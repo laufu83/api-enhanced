@@ -1,19 +1,16 @@
 FROM node:lts-alpine
 
-# 安装 tini + pnpm
+ENV NPM_CONFIG_UPDATE_NOTIFIER=false
 RUN apk add --no-cache tini \
     && npm install -g pnpm
 
 ENV NODE_ENV production
 WORKDIR /app
 
-# 复制依赖配置
 COPY --chown=node:node package.json pnpm-lock.yaml ./
+# 忽略生命周期脚本，避免执行husky等开发钩子
+RUN pnpm install --frozen-lockfile --prod --ignore-scripts
 
-# 生产环境精准安装依赖
-RUN pnpm install --frozen-lockfile --prod
-
-# 复制全部源码
 COPY --chown=node:node . .
 
 USER node
