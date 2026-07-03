@@ -13,4 +13,4 @@ COPY --chown=root:root . .
 
 USER root
 EXPOSE 3000
-CMD [ "/sbin/tini", "--", "node", "main.js" ]
+CMD [ "/sbin/tini", "--", "node", "app.js" ]
