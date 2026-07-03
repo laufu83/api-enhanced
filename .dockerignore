@@ -1,15 +1,22 @@
-/**
-!/module
-!/plugins
-!/public
-!/static
-!/util
-!/app.js
-!/server.js
-!/package.json
-!/index.js
-!/generateConfig.js
-!/main.js
-!/data
-!/.env
-!/pnpm-lock.yaml
+# 依赖目录（本地不要打包进去，容器内重新安装）
+node_modules
+
+# 版本控制、编辑器配置
+.git
+.gitignore
+.vscode
+.DS_Store
+
+# 日志、缓存、临时数据
+logs
+cache
+data
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# 环境变量（避免本地隐私配置打包）
+.env
+.env.local
+.env.development
+.env.production
