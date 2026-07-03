@@ -6,12 +6,11 @@ RUN apk add --no-cache tini \
 ENV NODE_ENV production
 WORKDIR /app
 
-COPY --chown=node:node package.json pnpm-lock.yaml ./
+COPY --chown=root:root package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --prod --ignore-scripts
 
-COPY --chown=node:node . .
+COPY --chown=root:root . .
 
-USER node
+USER root
 EXPOSE 3000
-# 关键修改：启动 main.js
 CMD [ "/sbin/tini", "--", "node", "main.js" ]
