@@ -414,7 +414,7 @@ async function constructServer(moduleDefs) {
  */
 async function serveNcmApi(options) {
   const port = Number(options.port || process.env.PORT || '3000')
-  const host = options.host || process.env.HOST || ''
+  const host = options.host || process.env.HOST || '0.0.0.0'
 
   const spinner = createConsoleSpinner('服务启动中')
 
