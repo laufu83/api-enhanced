@@ -438,12 +438,7 @@ async function serveNcmApi(options) {
 
   /** @type {import('express').Express & ExpressExtension} */
   const appExt = app
-  appExt.server = app.listen(port, '0.0.0.0', () => {
-    console.log(`
-  ╔═╗╔═╗╦    ╔═╗╔╗╔╦ ╦╔═╗╔╗╔╔═╗╔═╗╔╦╗
-  ╠═╣╠═╝║    ║╣ ║║║╠═╣╠═╣║║║║  ║╣  ║║
-  ╩ ╩╩  ╩    ╚═╝╝╚╝╩ ╩╩ ╩╝╚╝╚═╝╚═╝═╩╝
-    `)
+  appExt.server = app.listen(port, host, () => {
     logger.info(`
 - Server started successfully @ http://${host ? host : 'localhost'}:${port}
 - Environment: ${process.env.NODE_ENV || 'development'}
